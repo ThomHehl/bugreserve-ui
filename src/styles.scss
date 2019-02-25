@@ -1,1 +1,52 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: headerFont;
+  src: url(assets/ProzaLibre-SemiBold.ttf);
+}
+
+@font-face {
+  font-family: textFont;
+  src: url(assets/OpenSans-Light.ttf);
+}
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+/* unvisited link */
+a:link, a:visited {
+  background-color: #f44336;
+  color: white;
+  display: inline-block;
+  font-family: headerFont;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* mouse over link */
+a:hover, a:active {
+  background-color: red;
+}
+
+aside {
+  display: block;
+  float: right;
+}
+
+header {
+  display: block;
+  float: left;
+  width: 85%;
+}
+
+h1 {
+  font-family: headerFont;
+}
+
+nav {
+  display: block;
+  float: right;
+  width: 15%;
+}
+
+p {
+  font-family: textFont;
+}
