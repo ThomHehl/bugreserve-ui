@@ -8,6 +8,7 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material';
 import { CreateComponent } from './create/create.component';
+import {HttpClient, HttpClientModule, HttpHandler} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,9 +21,11 @@ import { CreateComponent } from './create/create.component';
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatButtonModule
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
