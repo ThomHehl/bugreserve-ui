@@ -1,3 +1,6 @@
-<p>
-  create works!
-</p>
+<h3>Create Issue</h3>
+<ul>
+  <li *ngFor="let issueType of settingsMap.get(SettingsType.IssueType) | async">
+    {{issueType}}
+  </li>
+</ul>

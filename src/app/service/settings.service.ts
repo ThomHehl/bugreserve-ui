@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Web} from '../classes/Web';
+import {AppState} from '../app.state';
+import {Store} from '@ngrx/store';
+import {AddSetup} from '../actions/setup.actions';
 
 @Injectable({
   providedIn: 'root'
@@ -9,17 +12,14 @@ export class SettingsService {
 
   private GET_SETTINGS = 'setup';
 
-  private settingsMap: Map<string, string[]>;
-
-  constructor(private http: HttpClient)  {
+  constructor(private http: HttpClient, private store: Store<AppState>)  {
     this.loadSettings();
   }
 
   loadSettings(): void {
     this.http.get<Map<string, string[]>>(this.getSettingsUrl())
       .subscribe( settings => {
-        this.settingsMap = settings;
-        console.log('Settings Map', this.settingsMap);
+        this.store.dispatch(new AddSetup(settings) );
     });
   }
 

@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {APP_INITIALIZER, NgModule} from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,7 +8,14 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material';
 import { CreateComponent } from './create/create.component';
-import {HttpClient, HttpClientModule, HttpHandler} from '@angular/common/http';
+import {HttpClientModule} from '@angular/common/http';
+import {StoreModule} from '@ngrx/store';
+import {reducer} from './reducers/setup.reducer';
+import {AppLoadService} from './service/app-load-service.service';
+
+export function get_settings(appLoadService: AppLoadService) {
+  return () => appLoadService.getSettings();
+}
 
 @NgModule({
   declarations: [
@@ -20,11 +27,16 @@ import {HttpClient, HttpClientModule, HttpHandler} from '@angular/common/http';
   imports: [
     AppRoutingModule,
     BrowserModule,
+    StoreModule.forRoot({
+      settings: reducer
+    }),
     BrowserAnimationsModule,
     HttpClientModule,
     MatButtonModule
   ],
   providers: [
+    AppLoadService,
+    { provide: APP_INITIALIZER, useFactory: get_settings, deps: [AppLoadService], multi: true }
   ],
   bootstrap: [AppComponent]
 })

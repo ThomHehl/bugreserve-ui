@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {SettingsService} from '../service/settings.service';
+import {AppState} from '../app.state';
+import {Store} from '@ngrx/store';
 
 
 @Component({
@@ -9,9 +11,15 @@ import {SettingsService} from '../service/settings.service';
 })
 export class CreateComponent implements OnInit {
 
-  constructor(private settingsService: SettingsService) { }
+  private settingsMap: Map<string, string[]>;
+
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
+    this.store.select('settings').subscribe(settings => {
+     this.settingsMap = settings;
+     console.log('settings', settings);
+    });
   }
 
 }
