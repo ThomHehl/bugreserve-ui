@@ -13,8 +13,8 @@ import {StoreModule} from '@ngrx/store';
 import {reducer} from './reducers/setup.reducer';
 import {AppLoadService} from './service/app-load-service.service';
 
-export function get_settings(appLoadService: AppLoadService) {
-  return () => appLoadService.getSettings();
+export function load_settings(appLoadService: AppLoadService) {
+  return () => appLoadService.loadSettings();
 }
 
 @NgModule({
@@ -28,7 +28,7 @@ export function get_settings(appLoadService: AppLoadService) {
     AppRoutingModule,
     BrowserModule,
     StoreModule.forRoot({
-      settings: reducer
+      issueOptions: reducer
     }),
     BrowserAnimationsModule,
     HttpClientModule,
@@ -36,7 +36,7 @@ export function get_settings(appLoadService: AppLoadService) {
   ],
   providers: [
     AppLoadService,
-    { provide: APP_INITIALIZER, useFactory: get_settings, deps: [AppLoadService], multi: true }
+    { provide: APP_INITIALIZER, useFactory: load_settings, deps: [AppLoadService], multi: true }
   ],
   bootstrap: [AppComponent]
 })

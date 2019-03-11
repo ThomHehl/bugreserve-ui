@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Web} from '../classes/Web';
-import {AppState} from '../app.state';
-import {Store} from '@ngrx/store';
-import {AddSetup} from '../actions/setup.actions';
+import {Web} from '../classes/web';
+import {Observable} from 'rxjs';
+import {IssueOptions} from '../classes/issue-options';
 
 @Injectable({
   providedIn: 'root'
@@ -12,15 +11,10 @@ export class SettingsService {
 
   private GET_SETTINGS = 'setup';
 
-  constructor(private http: HttpClient, private store: Store<AppState>)  {
-    this.loadSettings();
-  }
+  constructor(private http: HttpClient)  { }
 
-  loadSettings(): void {
-    this.http.get<Map<string, string[]>>(this.getSettingsUrl())
-      .subscribe( settings => {
-        this.store.dispatch(new AddSetup(settings) );
-    });
+  loadSettings(): Observable<IssueOptions> {
+    return this.http.get<IssueOptions>(this.getSettingsUrl());
   }
 
   private getSettingsUrl(): string {

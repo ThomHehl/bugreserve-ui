@@ -1,3 +1,5 @@
+import {IssueOptions} from './classes/issue-options';
+
 export interface AppState {
-  readonly settings: Map<string, string[]>;
+  readonly issueOptions: IssueOptions;
 }

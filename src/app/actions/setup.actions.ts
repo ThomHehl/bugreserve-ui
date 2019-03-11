@@ -1,20 +1,14 @@
 import {Action} from '@ngrx/store';
 import {SettingsService} from '../service/settings.service';
+import {IssueOptions} from '../classes/issue-options';
 
 
-export const ADD_SETUP =                '[SETUP] Add';
 export const LOAD_SETUP =               '[SETUP] Load';
-
-export class AddSetup implements Action {
-  readonly type = ADD_SETUP;
-
-  constructor(settings: Map<string, string[]>) {}
-}
 
 export class LoadSetup implements Action {
   readonly type = LOAD_SETUP;
 
-  constructor(settingsService: SettingsService) {}
+  constructor(public settingsService: SettingsService, public payload: IssueOptions) {}
 }
 
-export type Actions = AddSetup | LoadSetup;
+export type Actions = LoadSetup;

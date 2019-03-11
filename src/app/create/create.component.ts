@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {SettingsService} from '../service/settings.service';
 import {AppState} from '../app.state';
 import {Store} from '@ngrx/store';
+import {take} from 'rxjs/operators';
+import {IssueOptions} from '../classes/issue-options';
 
 
 @Component({
@@ -11,15 +12,16 @@ import {Store} from '@ngrx/store';
 })
 export class CreateComponent implements OnInit {
 
-  private settingsMap: Map<string, string[]>;
+  public issueOptions: IssueOptions;
 
   constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
-    this.store.select('settings').subscribe(settings => {
-     this.settingsMap = settings;
-     console.log('settings', settings);
-    });
+    this.store.select('issueOptions').pipe(take(1))
+      .subscribe((issueOptions: IssueOptions) => {
+        this.issueOptions = issueOptions;
+        console.log('issueOptions', issueOptions);
+      });
   }
 
 }
