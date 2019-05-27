@@ -11,6 +11,7 @@ import {SettingsService} from '../service/settings.service';
 export class CreateComponent implements OnInit {
 
   public configOptions: ConfigOptions;
+  public issueType: string;
 
   constructor(private settingsService: SettingsService) { }
 

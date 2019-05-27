@@ -36,7 +36,6 @@ export class SettingsService {
 
   private getSettingsUrl(): string {
     const result = Web.buildRestUrl(this.GET_SETTINGS);
-    console.log('Calling:', result);
     return result;
   }
 }

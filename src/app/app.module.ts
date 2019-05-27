@@ -6,7 +6,7 @@ import {AppComponent} from './app.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {NotificationsComponent} from './notifications/notifications.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule} from '@angular/material';
+import {MatButtonModule, MatFormFieldModule, MatSelectModule} from '@angular/material';
 import {CreateComponent} from './create/create.component';
 import {HttpClientModule} from '@angular/common/http';
 import {AppLoadService} from './service/app-load-service.service';
@@ -29,7 +29,9 @@ export function load_settings(appLoadService: AppLoadService) {
     StorageServiceModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MatButtonModule
+    MatButtonModule,
+    MatFormFieldModule,
+    MatSelectModule
   ],
   providers: [
     AppLoadService,

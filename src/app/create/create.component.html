@@ -1,6 +1,9 @@
 <h3>Create Issue</h3>
 <ul *ngIf="configOptions">
-  <li *ngFor="let iType of configOptions.issueType">
-    {{iType}}
-  </li>
+  <mat-form-field>
+    <mat-label>Issue Type</mat-label>
+    <mat-select [(value)]="issueType">
+        <mat-option *ngFor="let iType of configOptions.issueType" value="{{iType}}">{{iType}}</mat-option>
+    </mat-select>
+  </mat-form-field>
 </ul>
