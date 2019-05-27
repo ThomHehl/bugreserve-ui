@@ -1,6 +1,6 @@
 <h3>Create Issue</h3>
-<ul *ngIf="settingsMap">
-  <li *ngFor="let issueType of settingsMap.get('issueType')">
-    {{issueType}}
+<ul *ngIf="configOptions">
+  <li *ngFor="let iType of configOptions.issueType">
+    {{iType}}
   </li>
 </ul>
